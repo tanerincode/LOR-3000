@@ -23,3 +23,13 @@ precommit-install:
 
 precommit-run:
 	. .venv/bin/activate && pre-commit run --all-files
+
+docker-build:
+	docker build -t lor3000:latest .
+
+docker-run:
+	docker run --rm -p 8000:8000 \
+	  -e OPENAI_API_KEY=$${OPENAI_API_KEY} \
+	  -e APP_CONFIG_FILE=/config/app.yaml \
+	  -v $${PWD}/config:/config \
+	  lor3000:latest

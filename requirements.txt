@@ -11,3 +11,5 @@ ruff==0.4.9
 pytest==8.2.0
 pre-commit==3.7.1
 mypy==1.10.0
+openai==1.35.10
+PyYAML==6.0.2

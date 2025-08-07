@@ -1,0 +1,17 @@
+# Application configuration (file values can be overridden by environment variables)
+app_name: LOR-3000
+environment: production
+
+# Routing & output
+primary: openai:gpt-4
+fallbacks:
+  - claude:opus
+format: markdown
+max_tokens: 4000
+
+# Prompts file path inside container/host
+prompts_file: /config/prompts.yaml
+
+# Optional datastores (can be set via env too)
+# database_url: postgresql+psycopg://user:password@db:5432/lor3000
+# redis_url: redis://redis:6379/0
