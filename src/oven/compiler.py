@@ -12,5 +12,3 @@ def compile_prompt(record: PromptRecord, variables: Mapping[str, str] | None = N
         return base
     # Use safe substitution to avoid KeyErrors for missing vars
     return Template(base).safe_substitute(**variables)
-
-

@@ -2,14 +2,12 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict, List
 
-import yaml
-
+import yaml  # type: ignore[import-untyped]
 from oven.schemas import PromptRecord
 
 
-def load_prompts_from_file(path: str | Path) -> Dict[str, PromptRecord]:
+def load_prompts_from_file(path: str | Path) -> dict[str, PromptRecord]:
     file_path = Path(path)
     if not file_path.exists():
         raise FileNotFoundError(f"Prompt file not found: {file_path}")
@@ -23,11 +21,9 @@ def load_prompts_from_file(path: str | Path) -> Dict[str, PromptRecord]:
     if not isinstance(data, dict):
         raise ValueError("Prompt file must be a mapping of name -> record")
 
-    prompts: Dict[str, PromptRecord] = {}
+    prompts: dict[str, PromptRecord] = {}
     for name, record in data.items():
         if not isinstance(record, dict):
             raise ValueError(f"Prompt record for '{name}' must be a mapping")
         prompts[name] = PromptRecord(name=name, **record)
     return prompts
-
-

@@ -16,4 +16,3 @@ def test_load_prompts_from_yaml(tmp_path: Path) -> None:
     prompts = load_prompts_from_file(p)
     assert "support_agent" in prompts
     assert prompts["support_agent"].system.startswith("You are a helpful")
-

@@ -16,5 +16,5 @@ def read_config() -> dict:
         "fallbacks": settings.fallbacks,
         "format_options": ["raw", "markdown", "json"],
         "max_tokens": settings.max_tokens,
-        "prompts_loaded": sorted(list(oven._store.keys())),
+        "prompts_loaded": oven.names(),
     }
