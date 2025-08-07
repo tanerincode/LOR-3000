@@ -13,6 +13,7 @@ class ChatRequest(BaseModel):
     format: str | None = "markdown"
     prompt_name: str | None = None
     prompt_vars: dict[str, str] | None = None
+    prompt_version: str | None = None
 
 
 class ChatResponse(BaseModel):
@@ -25,7 +26,7 @@ def chat(body: ChatRequest) -> ChatResponse:
     system_prompt: str | None = None
     if body.prompt_name:
         oven = PromptOven()
-        record = oven.get(body.prompt_name)
+        record = oven.get(body.prompt_name, body.prompt_version)
         if record:
             system_prompt = compile_prompt(record, body.prompt_vars or {})
 
